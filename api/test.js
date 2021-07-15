@@ -1,3 +1,8 @@
 module.exports = (req, res) => {
-  res.status(200).setHeader("etag", "asdf1234asdf").json({ hello: "world" });
+  const now = Date.now();
+
+  res
+    .status(200)
+    .setHeader("ETag", `"${now.toString()}"`)
+    .json({ hello: "world", now });
 };
